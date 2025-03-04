@@ -17,7 +17,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        return view('reservas.index', ['reservas'=>Reserva::all()]);
+        // return view('reservas.index', ['reservas'=>Reserva::all()]);
     }
 
     /**

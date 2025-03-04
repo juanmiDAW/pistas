@@ -23,6 +23,9 @@
                                         <th scope="col" class="px-6 py-3">
                                             Usuario_id
                                         </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Acciones
+                                        </th>
 
                                 </thead>
                                 <tbody>

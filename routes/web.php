@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ReservaController;
+use App\Livewire\ReservaIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -16,3 +17,5 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 Route::resource('reservas', ReservaController::class);
+
+Route::get('reservas', ReservaIndex::class)->middleware('auth');
