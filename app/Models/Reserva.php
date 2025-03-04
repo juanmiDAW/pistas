@@ -9,4 +9,14 @@ class Reserva extends Model
 {
     /** @use HasFactory<\Database\Factories\ReservaFactory> */
     use HasFactory;
+
+    protected $fillable =['dia_hora', 'pista_id', 'user_id'];
+
+    public function pista(){
+        return $this->belongsTo(Pista::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

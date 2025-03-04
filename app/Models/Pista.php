@@ -9,4 +9,10 @@ class Pista extends Model
 {
     /** @use HasFactory<\Database\Factories\PistaFactory> */
     use HasFactory;
+    
+    protected $fillable = ['nombre'];
+
+    public function reservas(){
+        return $this->hasMany(Reserva::class);
+    }
 }
