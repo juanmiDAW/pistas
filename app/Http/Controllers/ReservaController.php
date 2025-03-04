@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReservaRequest;
 use App\Http\Requests\UpdateReservaRequest;
 use App\Models\Reserva;
+use Illuminate\Http\Request;
+use Livewire\Volt\Exceptions\ReturnNewClassExecutionEndingException;
+
+use function Pest\Laravel\delete;
 
 class ReservaController extends Controller
 {
@@ -13,7 +17,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        return view('reservas.index', ['reservas'=>Reserva::all()]);
     }
 
     /**
@@ -21,15 +25,22 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        return view('reservas.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreReservaRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'dia_hora' => 'required|string', 
+            'pista_id' => 'required|integer',
+            'user_id' => 'required|integer',
+        ]);
+
+        Reserva::create($validated);
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -61,6 +72,7 @@ class ReservaController extends Controller
      */
     public function destroy(Reserva $reserva)
     {
-        //
+        $reserva->delete();
+         return redirect()->route('reservas.index');
     }
 }
